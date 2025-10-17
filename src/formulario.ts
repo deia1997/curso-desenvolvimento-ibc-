@@ -41,9 +41,9 @@ function atualizarTabela() {
 }
 
 btnEnviar.addEventListener("click", () => {
-  const nome = txtNome.value.trim();
-  const email = txtEmail.value.trim();
-  const mensagem = txtMensagem.value.trim();
+  const nome = txtNome.value;
+  const email = txtEmail.value;
+  const mensagem = txtMensagem.value;
 
   if (!nome || !email || !mensagem) {
     exibirMensagem("red", "Todos os campos são obrigatórios!");
@@ -63,3 +63,4 @@ btnLimpar.addEventListener("click", () => {
 });
 
 window.onload = atualizarTabela;
+
