@@ -41,7 +41,9 @@ function atualizarTabela() {
   });
 }
 
-btnEnviar.addEventListener("click", () => {
+btnEnviar.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const nome = txtNome.value.trim();
   const email = txtEmail.value.trim();
   const mensagem = txtMensagem.value.trim();
@@ -63,4 +65,4 @@ btnLimpar.addEventListener("click", () => {
   divMensagem.textContent = "";
 });
 
-window.onload = atualizarTabela;
+document.addEventListener("DOMContentLoaded", atualizarTabela);
