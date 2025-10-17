@@ -34,6 +34,11 @@ formContato.addEventListener("submit", (event) => {
         return;
     }
 
+    if (!txtNome.value.trim() || !txtEmail.value.trim() || !txtMensagem.value.trim()) {
+        exibirMensagem("red", "Preencha todos os campos antes de enviar!");
+        return;
+    }
+
     const nome = txtNome.value;
     const email = txtEmail.value;
     const mensagem = txtMensagem.value;
