@@ -29,16 +29,21 @@ function atualizarTabela() {
     tabelaMensagens.appendChild(linha);
   });
 
-  document.querySelectorAll(".btnExcluir").forEach((botao) => {
+  const botoesExcluir = document.querySelectorAll(".btnExcluir");
+  botoesExcluir.forEach((botao) => {
     botao.addEventListener("click", (e) => {
       const id = e.target.getAttribute("data-id");
-      Form.excluir(id);
-      atualizarTabela();
+      if (id) {
+        Form.excluir(id);
+        atualizarTabela();
+      }
     });
   });
 }
 
-btnEnviar.addEventListener("click", () => {
+btnEnviar.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const nome = txtNome.value.trim();
   const email = txtEmail.value.trim();
   const mensagem = txtMensagem.value.trim();
@@ -51,7 +56,6 @@ btnEnviar.addEventListener("click", () => {
   const novoForm = new Form(nome, email, mensagem);
   novoForm.cadastrar();
   exibirMensagem("green", "Mensagem enviada com sucesso!");
-
   formContato.reset();
   atualizarTabela();
 });
@@ -61,4 +65,4 @@ btnLimpar.addEventListener("click", () => {
   divMensagem.textContent = "";
 });
 
-window.onload = atualizarTabela;
+document.addEventListener("DOMContentLoaded", atualizarTabela);
