@@ -4,7 +4,6 @@ const form = document.getElementById("formulario") as HTMLFormElement;
 const txtNome = document.getElementById("txtNome") as HTMLInputElement;
 const txtEmail = document.getElementById("txtEmail") as HTMLInputElement;
 const txtMensagem = document.getElementById("txtMensagem") as HTMLTextAreaElement;
-const btnEnviar = document.getElementById("btnEnviar") as HTMLButtonElement;
 const btnLimpar = document.getElementById("btnLimpar") as HTMLButtonElement;
 const divMensagem = document.getElementById("divMensagem") as HTMLDivElement;
 const tbody = document.getElementById("tabelaMensagens") as HTMLTableSectionElement;
@@ -40,10 +39,12 @@ function atualizarTabela() {
   });
 }
 
-btnEnviar.addEventListener("click", () => {
-  const nome = txtNome.value;
-  const email = txtEmail.value;
-  const mensagem = txtMensagem.value;
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const nome = txtNome.value.trim();
+  const email = txtEmail.value.trim();
+  const mensagem = txtMensagem.value.trim();
 
   if (!nome || !email || !mensagem) {
     exibirMensagem("red", "Todos os campos são obrigatórios!");
@@ -57,10 +58,10 @@ btnEnviar.addEventListener("click", () => {
   atualizarTabela();
 });
 
-btnLimpar.addEventListener("click", () => {
+btnLimpar.addEventListener("click", (event) => {
+  event.preventDefault();
   form.reset();
   divMensagem.textContent = "";
 });
 
 window.onload = atualizarTabela;
-
