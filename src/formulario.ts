@@ -1,68 +1,61 @@
-import { Form } from "./form.js";
+import { Form } from "./classes/form.js";
 
-const form = document.getElementById("formulario") as HTMLFormElement;
+const formContato = document.getElementById("formulario") as HTMLFormElement;
 const txtNome = document.getElementById("txtNome") as HTMLInputElement;
 const txtEmail = document.getElementById("txtEmail") as HTMLInputElement;
 const txtMensagem = document.getElementById("txtMensagem") as HTMLTextAreaElement;
-const btnLimpar = document.getElementById("btnLimpar") as HTMLButtonElement;
 const divMensagem = document.getElementById("divMensagem") as HTMLDivElement;
-const tbody = document.getElementById("tabelaMensagens") as HTMLTableSectionElement;
 
-function exibirMensagem(cor: string, msg: string) {
-  divMensagem.style.color = cor;
-  divMensagem.textContent = msg;
+let params = new URLSearchParams(window.location.search);
+let id = params.get("id");
+
+window.onload = () => {
+    if (id) {
+        const btns = formContato.querySelectorAll<HTMLButtonElement>("#btnSubmit");
+        btns[0].textContent = "Alterar";
+        carregarDadosForm(id);
+    }
 }
 
-function atualizarTabela(): void {
-  const lista = Form.listar();
-  tbody.innerHTML = "";
-  lista.forEach(item => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${item.nome}</td>
-      <td>${item.email}</td>
-      <td>${item.mensagem}</td>
-      <td><button class="btnExcluir" data-id="${item.id}">Excluir</button></td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  const botoes = document.querySelectorAll(".btnExcluir") as NodeListOf<HTMLButtonElement>;
-  botoes.forEach(botao => {
-    botao.addEventListener("click", (e) => {
-      const id = (e.target as HTMLButtonElement).dataset.id;
-      if (id) {
-        Form.excluir(id);
-        atualizarTabela();
-      }
-    });
-  });
+function exibirMensagem(color: string, msg: string) {
+    divMensagem.style.color = color;
+    divMensagem.textContent = msg;
 }
 
-form.addEventListener("submit", (event: Event) => {
-  event.preventDefault();
+formContato.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const nome = txtNome.value.trim();
-  const email = txtEmail.value.trim();
-  const mensagem = txtMensagem.value.trim();
+    const target = event.submitter as HTMLButtonElement; // identifica o botão clicado
 
-  if (!nome || !email || !mensagem) {
-    exibirMensagem("red", "Todos os campos são obrigatórios!");
-    return;
-  }
+    if (target.textContent === "Limpar") {
+        txtNome.value = "";
+        txtEmail.value = "";
+        txtMensagem.value = "";
+        divMensagem.textContent = "";
+        return;
+    }
 
-  const novo = new Form(nome, email, mensagem);
-  novo.cadastrar();
+    const nome = txtNome.value;
+    const email = txtEmail.value;
+    const mensagem = txtMensagem.value;
 
-  exibirMensagem("green", "Mensagem enviada com sucesso!");
-  form.reset();
-  atualizarTabela();
+    if (!id) {
+        const form = new Form(nome, email, mensagem);
+        form.cadastrar();
+        exibirMensagem("green", "Formulário enviado com sucesso");
+    } else {
+        const formAlterado = new Form(nome, email, mensagem);
+        formAlterado.id = id;
+        Form.alterar(formAlterado);
+        exibirMensagem("green", "Alteração realizada com sucesso");
+    }
 });
 
-btnLimpar.addEventListener("click", (event: Event) => {
-  event.preventDefault();
-  form.reset();
-  divMensagem.textContent = "";
-});
-
-window.addEventListener("DOMContentLoaded", atualizarTabela);
+function carregarDadosForm(id: string) {
+    const form = Form.buscarForm(id);
+    if (form) {
+        txtNome.value = form.nome;
+        txtEmail.value = form.email;
+        txtMensagem.value = form.mensagem;
+    }
+}
