@@ -1,52 +1,52 @@
 import { Form } from "./form.js";
 
-const formContato = document.getElementById("formulario") as HTMLFormElement;
+const formContato = document.getElementById("formContato") as HTMLFormElement;
 const txtNome = document.getElementById("txtNome") as HTMLInputElement;
 const txtEmail = document.getElementById("txtEmail") as HTMLInputElement;
 const txtMensagem = document.getElementById("txtMensagem") as HTMLTextAreaElement;
-const btnEnviar = document.getElementById("btnEnviar") as HTMLButtonElement;
 const btnLimpar = document.getElementById("btnLimpar") as HTMLButtonElement;
 const divMensagem = document.getElementById("divMensagem") as HTMLDivElement;
-const tabelaMensagens = document.getElementById("tabelaMensagens") as HTMLTableSectionElement;
+const tabela = document.getElementById("tabelaMensagens") as HTMLTableElement;
 
-function exibirMensagem(cor: string, msg: string) {
-  divMensagem.style.color = cor;
+function exibirMensagem(color: string, msg: string) {
+  divMensagem.style.color = color;
   divMensagem.textContent = msg;
+  setTimeout(() => (divMensagem.textContent = ""), 3000);
 }
 
-function atualizarTabela() {
+function renderizarTabela() {
   const lista = Form.listar();
-  tabelaMensagens.innerHTML = "";
+  const tbody = tabela.querySelector("tbody") as HTMLTableSectionElement;
+  tbody.innerHTML = "";
 
-  lista.forEach((form) => {
-    const linha = document.createElement("tr");
-    linha.innerHTML = `
-      <td>${form.nome}</td>
-      <td>${form.email}</td>
-      <td>${form.mensagem}</td>
-      <td><button data-id="${form.id}" class="btnExcluir">Excluir</button></td>
+  lista.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${item.nome}</td>
+      <td>${item.email}</td>
+      <td>${item.mensagem}</td>
+      <td><button data-id="${item.id}">Excluir</button></td>
     `;
-    tabelaMensagens.appendChild(linha);
+    tbody.appendChild(tr);
   });
 
-  const botoesExcluir = document.querySelectorAll(".btnExcluir") as NodeListOf<HTMLButtonElement>;
-  botoesExcluir.forEach((botao) => {
-    botao.addEventListener("click", (e) => {
-      const id = (e.target as HTMLButtonElement).getAttribute("data-id");
+  tabela.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-id");
       if (id) {
         Form.excluir(id);
-        atualizarTabela();
+        renderizarTabela();
       }
     });
   });
 }
 
-btnEnviar.addEventListener("click", (e) => {
-  e.preventDefault();
+formContato.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const nome = txtNome.value.trim();
-  const email = txtEmail.value.trim();
-  const mensagem = txtMensagem.value.trim();
+  const nome = txtNome.value;
+  const email = txtEmail.value;
+  const mensagem = txtMensagem.value;
 
   if (!nome || !email || !mensagem) {
     exibirMensagem("red", "Todos os campos são obrigatórios!");
@@ -55,9 +55,10 @@ btnEnviar.addEventListener("click", (e) => {
 
   const novoForm = new Form(nome, email, mensagem);
   novoForm.cadastrar();
+
   exibirMensagem("green", "Mensagem enviada com sucesso!");
   formContato.reset();
-  atualizarTabela();
+  renderizarTabela();
 });
 
 btnLimpar.addEventListener("click", () => {
@@ -65,4 +66,4 @@ btnLimpar.addEventListener("click", () => {
   divMensagem.textContent = "";
 });
 
-document.addEventListener("DOMContentLoaded", atualizarTabela);
+renderizarTabela();
