@@ -1,67 +1,60 @@
-import { Form } from "./form.js";
+import { Form } from "./classes/form.js";
 
-const form = document.getElementById("formulario");
+const formContato = document.getElementById("formulario");
 const txtNome = document.getElementById("txtNome");
 const txtEmail = document.getElementById("txtEmail");
 const txtMensagem = document.getElementById("txtMensagem");
-const btnLimpar = document.getElementById("btnLimpar");
 const divMensagem = document.getElementById("divMensagem");
-const tbody = document.getElementById("tabelaMensagens");
 
-function exibirMensagem(cor, msg) {
-  divMensagem.style.color = cor;
-  divMensagem.textContent = msg;
+let params = new URLSearchParams(window.location.search);
+let id = params.get("id");
+
+window.onload = () => {
+    if (id) {
+        const btns = formContato.querySelectorAll("#btnSubmit");
+        btns[0].textContent = "Alterar";
+        carregarDadosForm(id);
+    }
+};
+
+function exibirMensagem(color, msg) {
+    divMensagem.style.color = color;
+    divMensagem.textContent = msg;
 }
 
-function atualizarTabela() {
-  const lista = Form.listar();
-  tbody.innerHTML = "";
-  lista.forEach(item => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${item.nome}</td>
-      <td>${item.email}</td>
-      <td>${item.mensagem}</td>
-      <td><button class="btnExcluir" data-id="${item.id}">Excluir</button></td>
-    `;
-    tbody.appendChild(tr);
-  });
+formContato.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const target = event.submitter;
 
-  document.querySelectorAll(".btnExcluir").forEach(botao => {
-    botao.addEventListener("click", (e) => {
-      const id = e.target.dataset.id;
-      if (id) {
-        Form.excluir(id);
-        atualizarTabela();
-      }
-    });
-  });
+    if (target.textContent === "Limpar") {
+        txtNome.value = "";
+        txtEmail.value = "";
+        txtMensagem.value = "";
+        divMensagem.textContent = "";
+        return;
+    }
+
+    const nome = txtNome.value;
+    const email = txtEmail.value;
+    const mensagem = txtMensagem.value;
+
+    if (!id) {
+        const form = new Form(nome, email, mensagem);
+        form.cadastrar();
+        exibirMensagem("green", "Formulário enviado com sucesso");
+    } else {
+        const formAlterado = new Form(nome, email, mensagem);
+        formAlterado.id = id;
+        Form.alterar(formAlterado);
+        exibirMensagem("green", "Alteração realizada com sucesso");
+    }
+});
+
+function carregarDadosForm(id) {
+    const form = Form.buscarForm(id);
+    if (form) {
+        txtNome.value = form.nome;
+        txtEmail.value = form.email;
+        txtMensagem.value = form.mensagem;
+    }
 }
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const nome = txtNome.value.trim();
-  const email = txtEmail.value.trim();
-  const mensagem = txtMensagem.value.trim();
-
-  if (nome === "" || email === "" || mensagem === "") {
-    exibirMensagem("red", "Todos os campos são obrigatórios!");
-    return;
-  }
-
-  const novo = new Form(nome, email, mensagem);
-  novo.cadastrar();
-
-  exibirMensagem("green", "Mensagem enviada com sucesso!");
-  form.reset();
-  atualizarTabela();
-});
-
-btnLimpar.addEventListener("click", (event) => {
-  event.preventDefault();
-  form.reset();
-  divMensagem.textContent = "";
-});
-
-window.addEventListener("DOMContentLoaded", atualizarTabela);
