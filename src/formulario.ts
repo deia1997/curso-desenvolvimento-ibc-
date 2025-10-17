@@ -13,7 +13,7 @@ function exibirMensagem(cor: string, msg: string) {
   divMensagem.textContent = msg;
 }
 
-function atualizarTabela() {
+function atualizarTabela(): void {
   const lista = Form.listar();
   tbody.innerHTML = "";
   lista.forEach(item => {
@@ -39,7 +39,7 @@ function atualizarTabela() {
   });
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", (event: Event) => {
   event.preventDefault();
 
   const nome = txtNome.value.trim();
@@ -53,15 +53,16 @@ form.addEventListener("submit", (event) => {
 
   const novo = new Form(nome, email, mensagem);
   novo.cadastrar();
+
   exibirMensagem("green", "Mensagem enviada com sucesso!");
   form.reset();
   atualizarTabela();
 });
 
-btnLimpar.addEventListener("click", (event) => {
+btnLimpar.addEventListener("click", (event: Event) => {
   event.preventDefault();
   form.reset();
   divMensagem.textContent = "";
 });
 
-window.onload = atualizarTabela;
+window.addEventListener("DOMContentLoaded", atualizarTabela);
