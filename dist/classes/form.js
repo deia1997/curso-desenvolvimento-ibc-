@@ -4,9 +4,6 @@ export class Form {
         this.email = email;
         this.mensagem = mensagem;
         this.id = crypto.randomUUID();
-        this.nome = nome;
-        this.email = email;
-        this.mensagem = mensagem;
     }
     cadastrar() {
         const listaForm = JSON.parse(localStorage.getItem("listaForm") || "[]");
@@ -14,8 +11,7 @@ export class Form {
         localStorage.setItem("listaForm", JSON.stringify(listaForm));
     }
     static listar() {
-        const listaForm = JSON.parse(localStorage.getItem("listaForm") || "[]");
-        return listaForm;
+        return JSON.parse(localStorage.getItem("listaForm") || "[]");
     }
     static excluir(id) {
         let listaForm = JSON.parse(localStorage.getItem("listaForm") || "[]");
@@ -24,18 +20,11 @@ export class Form {
     }
     static alterar(formAlterado) {
         let listaForm = JSON.parse(localStorage.getItem("listaForm") || "[]");
-        listaForm = listaForm.map((form) => {
-            if (form.id === formAlterado.id) {
-                return formAlterado;
-            }
-            return form;
-        });
+        listaForm = listaForm.map((form) => form.id === formAlterado.id ? formAlterado : form);
         localStorage.setItem("listaForm", JSON.stringify(listaForm));
     }
-    static buscar(id) {
+    static buscarForm(id) {
         const listaForm = this.listar();
-        const form = listaForm.find((form) => form.id === id);
-        return form;
+        return listaForm.find((form) => form.id === id);
     }
 }
-//# sourceMappingURL=form.js.map
