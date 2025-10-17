@@ -1,12 +1,10 @@
-
 export class Form {
-  public id: string;
+  id: string;
+  nome: string;
+  email: string;
+  mensagem: string;
 
-  constructor(
-    public nome: string,
-    public email: string,
-    public mensagem: string
-  ) {
+  constructor(nome: string, email: string, mensagem: string) {
     this.id = crypto.randomUUID();
     this.nome = nome;
     this.email = email;
@@ -20,31 +18,12 @@ export class Form {
   }
 
   static listar(): Form[] {
-    const listaForm: Form[] = JSON.parse(localStorage.getItem("listaForm") || "[]");
-    return listaForm;
+    return JSON.parse(localStorage.getItem("listaForm") || "[]");
   }
 
   static excluir(id: string): void {
     let listaForm: Form[] = JSON.parse(localStorage.getItem("listaForm") || "[]");
-    listaForm = listaForm.filter((form: Form) => form.id !== id);
+    listaForm = listaForm.filter(f => f.id !== id);
     localStorage.setItem("listaForm", JSON.stringify(listaForm));
-  }
-
-  static alterar(formAlterado: Form): void {
-    let listaForm: Form[] = JSON.parse(localStorage.getItem("listaForm") || "[]");
-    listaForm = listaForm.map((form: Form) => {
-      if (form.id === formAlterado.id) {
-        return formAlterado;
-      }
-      return form;
-    });
-    localStorage.setItem("listaForm", JSON.stringify(listaForm));
-  }
-
-  static buscar(id: string): Form | undefined {
-    const listaForm: Form[] = this.listar();
-    const form = listaForm.find((form) => form.id === id);
-    return form;
   }
 }
-
