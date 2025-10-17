@@ -27,8 +27,7 @@ function atualizarTabela() {
     tbody.appendChild(tr);
   });
 
-  const botoes = document.querySelectorAll(".btnExcluir");
-  botoes.forEach(botao => {
+  document.querySelectorAll(".btnExcluir").forEach(botao => {
     botao.addEventListener("click", (e) => {
       const id = e.target.dataset.id;
       if (id) {
@@ -46,13 +45,14 @@ form.addEventListener("submit", (event) => {
   const email = txtEmail.value.trim();
   const mensagem = txtMensagem.value.trim();
 
-  if (!nome || !email || !mensagem) {
+  if (nome === "" || email === "" || mensagem === "") {
     exibirMensagem("red", "Todos os campos são obrigatórios!");
     return;
   }
 
   const novo = new Form(nome, email, mensagem);
   novo.cadastrar();
+
   exibirMensagem("green", "Mensagem enviada com sucesso!");
   form.reset();
   atualizarTabela();
@@ -64,4 +64,4 @@ btnLimpar.addEventListener("click", (event) => {
   divMensagem.textContent = "";
 });
 
-window.onload = atualizarTabela;
+window.addEventListener("DOMContentLoaded", atualizarTabela);
