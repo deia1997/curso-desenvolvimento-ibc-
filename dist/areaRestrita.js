@@ -1,6 +1,6 @@
-import { AreaRestrita } from "./classes/areaRestrita.js";
+import { AreaRestrita } from "./classes/AreaRestrita.js";
 
-window.onload = () => {
+window.onload = function() {
   carregarTabela();
 };
 
@@ -10,29 +10,30 @@ function carregarTabela() {
 
   tabela.innerHTML = `
     <tr>
+      <th>Nome</th>
       <th>E-mail</th>
-      <th>Data e Hora do Acesso</th>
+      <th>Mensagem</th>
       <th>Ações</th>
     </tr>
   `;
 
-  lista.forEach(item => {
+  lista.forEach(function(areaRestrita) {
     const linha = tabela.insertRow();
-    linha.insertCell().textContent = item.email;
-    linha.insertCell().textContent = item.dataHora;
-    const celAcoes = linha.insertCell();
+    linha.insertCell().textContent = areaRestrita.nome;
+    linha.insertCell().textContent = areaRestrita.email;
+    linha.insertCell().textContent = areaRestrita.mensagem;
+
     const btnExcluir = document.createElement("button");
     btnExcluir.textContent = "Excluir";
-    btnExcluir.addEventListener("click", () => {
-      excluirAcesso(item.id);
+    btnExcluir.addEventListener("click", function() {
+      excluirArea(areaRestrita.id);
     });
-    celAcoes.appendChild(btnExcluir);
+
+    linha.insertCell().appendChild(btnExcluir);
   });
 }
 
-function excluirAcesso(id) {
-  if (confirm("Deseja realmente excluir esse registro?")) {
-    AreaRestrita.excluir(id);
-    carregarTabela();
-  }
+function excluirArea(id) {
+  AreaRestrita.excluir(id);
+  carregarTabela();
 }
