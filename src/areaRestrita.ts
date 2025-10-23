@@ -10,22 +10,23 @@ function carregarTabela() {
 
   tabela.innerHTML = `
     <tr>
-    <th>Nome</th>
+      <th>Nome</th>
       <th>E-mail</th>
-      <th>Memsagem</th>
+      <th>Mensagem</th>
       <th>Ações</th>
     </tr>
-  
+  `;
 
   lista.forEach(areaRestrita => {
     const linha = tabela.insertRow();
     linha.insertCell().textContent = areaRestrita.nome;
     linha.insertCell().textContent = areaRestrita.email;
     linha.insertCell().textContent = areaRestrita.mensagem;
-const btnExcluir = document.createElement("button");
+
+    const btnExcluir = document.createElement("button");
     btnExcluir.textContent = "Excluir";
     btnExcluir.addEventListener("click", () => {
-      excluirArea(area.id);
+      excluirArea(areaRestrita.id); // Corrigido para areaRestrita.id
     });
 
     linha.insertCell().appendChild(btnExcluir);
@@ -36,5 +37,3 @@ function excluirArea(id: string) {
   AreaRestrita.excluir(id);
   carregarTabela();
 }
-
-    
