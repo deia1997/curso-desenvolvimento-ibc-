@@ -8,13 +8,12 @@ const btnEnviar = document.getElementById("btnEnviar") as HTMLButtonElement;
 const btnLimpar = document.getElementById("btnLimpar") as HTMLButtonElement;
 const divMensagem = document.getElementById("divMensagem") as HTMLDivElement;
 
-const areasRestritas: AreaRestrita[] = [];
-
 function exibirMensagem(color: string, msg: string) {
   divMensagem.style.color = color;
   divMensagem.textContent = msg;
 }
 
+// Impede envio do formulário se os campos estiverem vazios
 formContato.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -27,15 +26,15 @@ formContato.addEventListener("submit", (event) => {
     return;
   }
 
-const areaRestrita = new AreaRestrita(nome, email, mensagem);
+  const areaRestrita = new AreaRestrita(nome, email, mensagem);
   areaRestrita.cadastrar();
   exibirMensagem("green", "Mensagem enviada com sucesso!");
   formContato.reset();
 });
 
+// Botão limpar
 btnLimpar.addEventListener("click", (event) => {
-  event.preventDefault(); // impede comportamento padrão
-  formContato.reset(); // limpa os campos
-  divMensagem.textContent = ""; // limpa também a mensagem
+  event.preventDefault();
+  formContato.reset();
+  divMensagem.textContent = "";
 });
-
