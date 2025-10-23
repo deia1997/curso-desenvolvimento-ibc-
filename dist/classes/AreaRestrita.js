@@ -1,23 +1,25 @@
 export class AreaRestrita {
-  static chave = "acessos";
-
-  static listar() {
-    return JSON.parse(localStorage.getItem(AreaRestrita.chave) || "[]");
+  constructor(nome, email, mensagem) {
+    this.nome = nome;
+    this.email = email;
+    this.mensagem = mensagem;
+    this.id = crypto.randomUUID();
   }
 
-  static salvar(item) {
-    const lista = AreaRestrita.listar();
-    const id = Date.now().toString();
-    lista.push({ id, email: item.email, dataHora: item.dataHora });
-    localStorage.setItem(AreaRestrita.chave, JSON.stringify(lista));
+  cadastrar() {
+    const lista = JSON.parse(localStorage.getItem("listaAreaRestrita") || "[]");
+    lista.push(this);
+    localStorage.setItem("listaAreaRestrita", JSON.stringify(lista));
+  }
+
+  static listar() {
+    const lista = JSON.parse(localStorage.getItem("listaAreaRestrita") || "[]");
+    return lista;
   }
 
   static excluir(id) {
-    const lista = AreaRestrita.listar().filter(i => i.id !== id);
-    localStorage.setItem(AreaRestrita.chave, JSON.stringify(lista));
-  }
-
-  static limpar() {
-    localStorage.removeItem(AreaRestrita.chave);
+    let lista = JSON.parse(localStorage.getItem("listaAreaRestrita") || "[]");
+    lista = lista.filter(area => area.id !== id);
+    localStorage.setItem("listaAreaRestrita", JSON.stringify(lista));
   }
 }
