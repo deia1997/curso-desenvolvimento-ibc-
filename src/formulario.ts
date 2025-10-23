@@ -1,61 +1,40 @@
-import { Form } from "./classes/form.js";
+import { AreaRestrita } from "./classes/AreaRestrita.js";
 
-const formContato = document.getElementById("formulario") as HTMLFormElement;
+const formContato = document.getElementById("formContato") as HTMLFormElement;
 const txtNome = document.getElementById("txtNome") as HTMLInputElement;
 const txtEmail = document.getElementById("txtEmail") as HTMLInputElement;
 const txtMensagem = document.getElementById("txtMensagem") as HTMLTextAreaElement;
+const btnEnviar = document.getElementById("btnEnviar") as HTMLButtonElement;
+const btnLimpar = document.getElementById("btnLimpar") as HTMLButtonElement;
 const divMensagem = document.getElementById("divMensagem") as HTMLDivElement;
 
-let params = new URLSearchParams(window.location.search);
-let id = params.get("id");
-
-window.onload = () => {
-    if (id) {
-        const btns = formContato.querySelectorAll<HTMLButtonElement>("#btnSubmit");
-        btns[0].textContent = "Alterar";
-        carregarDadosForm(id);
-    }
-}
+const areasRestritas: AreaRestrita[] = [];
 
 function exibirMensagem(color: string, msg: string) {
-    divMensagem.style.color = color;
-    divMensagem.textContent = msg;
+  divMensagem.style.color = color;
+  divMensagem.textContent = msg;
 }
 
 formContato.addEventListener("submit", (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const target = event.submitter as HTMLButtonElement; // identifica o botão clicado
+  const nome = txtNome.value.trim();
+  const email = txtEmail.value.trim();
+  const mensagem = txtMensagem.value.trim();
 
-    if (target.textContent === "Limpar") {
-        txtNome.value = "";
-        txtEmail.value = "";
-        txtMensagem.value = "";
-        divMensagem.textContent = "";
-        return;
-    }
+  if (!nome || !email || !mensagem) {
+    exibirMensagem("red", "Todos os campos são obrigatórios!");
+    return;
+  }
 
-    const nome = txtNome.value;
-    const email = txtEmail.value;
-    const mensagem = txtMensagem.value;
-
-    if (!id) {
-        const form = new Form(nome, email, mensagem);
-        form.cadastrar();
-        exibirMensagem("green", "Formulário enviado com sucesso");
-    } else {
-        const formAlterado = new Form(nome, email, mensagem);
-        formAlterado.id = id;
-        Form.alterar(formAlterado);
-        exibirMensagem("green", "Alteração realizada com sucesso");
-    }
+const areaRestrita = new AreaRestrita(nome, email, mensagem);
+  area.cadastrar();
+  exibirMensagem("green", "Mensagem enviada com sucesso!");
+  formContato.reset();
 });
 
-function carregarDadosForm(id: string) {
-    const form = Form.buscarForm(id);
-    if (form) {
-        txtNome.value = form.nome;
-        txtEmail.value = form.email;
-        txtMensagem.value = form.mensagem;
-    }
-}
+btnLimpar.addEventListener("click", (event) => {
+  event.preventDefault(); // impede comportamento padrão
+  formContato.reset(); // limpa os campos
+  divMensagem.textContent = ""; // limpa também a mensagem
+});
