@@ -6,7 +6,7 @@ window.onload = function() {
 
 function carregarTabela() {
   const lista = AreaRestrita.listar();
-  const tabela = document.getElementById("mensagem");
+  const tabela = document.getElementById("tabela-mensagem");
 
   tabela.innerHTML = `
     <tr>
