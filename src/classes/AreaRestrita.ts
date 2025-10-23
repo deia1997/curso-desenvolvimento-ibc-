@@ -1,23 +1,28 @@
 export class AreaRestrita {
-  private static chave = "acessos";
+  public id: string;
 
-  static listar(): { id: string; email: string; dataHora: string }[] {
-    return JSON.parse(localStorage.getItem(AreaRestrita.chave) || "[]");
+  constructor(
+    public nome: string,
+    public email: string,
+    public mensagem: string
+  ) {
+    this.id = crypto.randomUUID();
   }
 
-  static salvar(item: { email: string; dataHora: string }): void {
-    const lista = AreaRestrita.listar();
-    const id = Date.now().toString();
-    lista.push({ id, email: item.email, dataHora: item.dataHora });
-    localStorage.setItem(AreaRestrita.chave, JSON.stringify(lista));
+  cadastrar(): void {
+    const lista: AreaRestrita[] = JSON.parse(localStorage.getItem("listaAreaRestrita") || "[]");
+    lista.push(this);
+    localStorage.setItem("listaAreaRestrita", JSON.stringify(lista));
+  }
+
+  static listar(): AreaRestrita[] {
+    const lista: AreaRestrita[] = JSON.parse(localStorage.getItem("listaAreaRestrita") || "[]");
+    return lista;
   }
 
   static excluir(id: string): void {
-    const lista = AreaRestrita.listar().filter(i => i.id !== id);
-    localStorage.setItem(AreaRestrita.chave, JSON.stringify(lista));
-  }
-
-  static limpar(): void {
-    localStorage.removeItem(AreaRestrita.chave);
+    let lista: AreaRestrita[] = JSON.parse(localStorage.getItem("listaAreaRestrita") || "[]");
+    lista = lista.filter(area => area.id !== id);
+    localStorage.setItem("listaAreaRestrita", JSON.stringify(lista));
   }
 }
