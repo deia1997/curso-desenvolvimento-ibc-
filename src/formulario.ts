@@ -28,7 +28,7 @@ formContato.addEventListener("submit", (event) => {
   }
 
 const areaRestrita = new AreaRestrita(nome, email, mensagem);
-  area.cadastrar();
+  areaRestrita.cadastrar();
   exibirMensagem("green", "Mensagem enviada com sucesso!");
   formContato.reset();
 });
@@ -38,3 +38,4 @@ btnLimpar.addEventListener("click", (event) => {
   formContato.reset(); // limpa os campos
   divMensagem.textContent = ""; // limpa também a mensagem
 });
+
