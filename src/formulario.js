@@ -8,14 +8,13 @@ const btnEnviar = document.getElementById("btnEnviar");
 const btnLimpar = document.getElementById("btnLimpar");
 const divMensagem = document.getElementById("divMensagem");
 
-const areasRestritas = [];
-
 function exibirMensagem(color, msg) {
   divMensagem.style.color = color;
   divMensagem.textContent = msg;
 }
 
-formContato.addEventListener("submit", (event) => {
+
+formContato.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const nome = txtNome.value.trim();
@@ -29,11 +28,13 @@ formContato.addEventListener("submit", (event) => {
 
   const areaRestrita = new AreaRestrita(nome, email, mensagem);
   areaRestrita.cadastrar();
+
   exibirMensagem("green", "Mensagem enviada com sucesso!");
   formContato.reset();
 });
 
-btnLimpar.addEventListener("click", (event) => {
+
+btnLimpar.addEventListener("click", function(event) {
   event.preventDefault();
   formContato.reset();
   divMensagem.textContent = "";
