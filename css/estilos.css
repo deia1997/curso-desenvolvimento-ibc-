@@ -1,10 +1,10 @@
 * {
   margin:0 auto;
-  line-height: 1.6
+  line-height: 1.6;
   pading: 20px;
   justify-content: center;
   background-color: bisque;
-  box-sizing: border-box;
+  max-width: 800px;
   font-family: Arial, sans-serif;
 }
 
@@ -111,6 +111,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
