@@ -11,6 +11,7 @@ font-size: 15;
 border: 3px solid  white;
 text-align: center;
 }
+
 table {
 box-sizing: border-box;
 width: 240px;
@@ -20,6 +21,7 @@ margin: 0 auto;
 .modulo, th{
 font-size: 10;
 text-align: center;
+  text-align: justify;
 background-color: lightblue;
 }
 
@@ -35,11 +37,13 @@ background-color: khaki;
 .md{
 background-color: khaki;
 font-size: 15;
+  text-align: justify;
 text-align: center;
 }
 
 td.video {
 text-align: center;
+text-align: justify;
 width: 350px;
 }
 
@@ -62,6 +66,7 @@ font-size: 15;
 .h1, h2{
 background-color: lightblue;
 font-size: 25;
+text-align: justify;
 text-align: center;
 }
 
@@ -78,6 +83,7 @@ font-style: italic;
 font-size: 10;
 text-align: justify
 }
+
 
 
 
