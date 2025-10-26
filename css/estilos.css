@@ -8,7 +8,6 @@
 
 th, td {
 font-size: 15;
-text-align: justify;
 border: 3px solid  white;
 text-align: center;
 }
@@ -20,7 +19,6 @@ margin: 0 auto;
 
 .modulo, th{
 font-size: 10;
-text-align: justify;
 text-align: center;
 background-color: lightblue;
 }
@@ -37,12 +35,10 @@ background-color: khaki;
 .md{
 background-color: khaki;
 font-size: 15;
-text-align: justify;
 text-align: center;
 }
 
 td.video {
-text-align: justify;
 text-align: center;
 width: 350px;
 }
@@ -66,20 +62,23 @@ font-size: 15;
 .h1, h2{
 background-color: lightblue;
 font-size: 25;
-text-align: justify;
+text-align: center;
 }
 
 .p{
 background-color: lightblue;
 font-size: 20;
+text-align: center;
 text-align: justify;
 }
 
 .h3{
+text-align: center;
 font-style: italic;
 font-size: 10;
 text-align: justify
 }
+
 
 
 
