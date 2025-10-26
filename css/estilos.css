@@ -16,7 +16,7 @@ text-align: center;
 
 
 
-.modulo, th{
+.modulo{
 font-size: 10;
 text-align: center;
   text-align: justify;
@@ -63,9 +63,6 @@ text-align: justify;
 width: 350px;
 }
 
-td.fonte {
-width: 100px;
-}
 
 input, button {
 background-color: plum;
@@ -105,6 +102,7 @@ text-align: center;
 text-align: justify;
 font-size: 10;
 }
+
 
 
 
