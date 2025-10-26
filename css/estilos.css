@@ -1,6 +1,7 @@
 * {
   margin:0;
-  pading: 0;
+  pading: 20px;
+  justify-content: center;
   background-color: bisque;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
@@ -109,6 +110,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
