@@ -60,10 +60,11 @@ font-size: 12;
 text-align: center;
 }
 
-td.video {
+.video {
 text-align: center;
 text-align: justify;
-width: 350px;
+align-items: center;
+justify-content: center;
 }
 
 
@@ -113,6 +114,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
