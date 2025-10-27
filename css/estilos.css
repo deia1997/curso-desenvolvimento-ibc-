@@ -3,6 +3,7 @@
   margin-left:5px;
   line-height: 1.6;
   pading: 0;
+  letter-spacing: normal;
   justify-content: center;
   background-color: bisque;
   max-width: 800px;
@@ -114,6 +115,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
