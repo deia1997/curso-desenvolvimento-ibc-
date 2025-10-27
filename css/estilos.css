@@ -1,6 +1,7 @@
 * {
   font-family: Arial, sans-serif;
   margin-left:20px;
+  margin-right: 10px;
   line-height: 1.6;
   pading: 20px;
   justify-content: center;
@@ -113,6 +114,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
