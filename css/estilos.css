@@ -84,25 +84,23 @@ font-size: 10;
 background-color: lightblue;
 font-size: 15;
 text-align: justify;
-text-align: center;
+
 }
 
 .p{
 background-color: lightblue;
 font-size: 10;
 text-align: justify;
-text-align: center;
+
 }
 
 .h3{
-text-align: center;
 text-align: justify;
 font-style: italic;
 font-size: 1;
 }
 
 .texto{
-text-align: center;
 text-align: justify;
 font-size: 10;
 }
@@ -114,6 +112,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
