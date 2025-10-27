@@ -60,7 +60,7 @@ text-align: center;
 }
 
 .video {
-display: block; 
+display: flex; 
 text-align: center;
 text-align: justify;
 align-items: center;
@@ -114,6 +114,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
