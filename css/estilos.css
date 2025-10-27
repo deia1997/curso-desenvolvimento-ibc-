@@ -21,12 +21,14 @@ text-align: center;
 
 
 .modulo{
+border: 3px solid  khaki;
 font-size: 10;
 text-align: center;
 background-color: lightblue;
 }
 
 .tabela{
+border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
 font-size: 15;
@@ -36,6 +38,7 @@ background-color: khaki;
 }
 
 .c{
+border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
 font-size: 15;
@@ -45,6 +48,7 @@ background-color: khaki;
 }
 
 .ta{
+border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
 font-size: 15;
@@ -54,6 +58,7 @@ background-color: khaki;
 }
 
 .md{
+border: 3px solid  khaki;
 background-color: khaki;
 font-size: 10;
 text-align: justify;
@@ -115,6 +120,7 @@ text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
