@@ -119,6 +119,11 @@ display: block;
 justify-content: center;
 }
 
+.nome{
+white-space: nowrap;
+}
+
+
 
 
 
