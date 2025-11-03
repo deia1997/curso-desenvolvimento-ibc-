@@ -22,7 +22,7 @@ text-align: center;
 
 .modulo{
 border: 3px solid  khaki;
-font-size: 4vw;
+font-size: 3vw;
 text-align: center;
 background-color: lightblue;
 }
@@ -103,7 +103,7 @@ text-align: justify;
 .h3{
 text-align: justify;
 font-style: italic;
-font-size: 1vw;
+font-size: -1vw;
 }
 
 .texto{
@@ -122,6 +122,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
