@@ -31,7 +31,7 @@ background-color: lightblue;
 border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
-font-size: 4vw;
+font-size: 5vw;
 text-align: justify;
 text-align: center;
 background-color: khaki;
@@ -41,7 +41,7 @@ background-color: khaki;
 border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
-font-size: 4vw;
+font-size: 5vw;
 text-align: justify;
 text-align: center;
 background-color: khaki;
@@ -51,7 +51,7 @@ background-color: khaki;
 border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
-font-size: 4vw;
+font-size: 5vw;
 text-align: justify;
 text-align: center;
 background-color: khaki;
@@ -88,7 +88,7 @@ font-size: 3vw;
 
 .h1, h2{
 background-color: lightblue;
-font-size: 4vw;
+font-size: 5vw;
 text-align: justify;
 text-align: center;
 }
@@ -108,7 +108,7 @@ font-size: 1vw;
 
 .texto{
 text-align: justify;
-font-size: vw;
+font-size: 3vw;
 }
 
 .voltar{
@@ -122,6 +122,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
