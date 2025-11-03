@@ -8,12 +8,12 @@
   letter-spacing: normal;
   justify-content: center;
   background-color: snow white;
-  max-width: 800px;
+  max-width: 400%;
 }
 
 th, td {
 background-color: lightblue;
-font-size: 10;
+font-size: 3vw;
 border: 3px solid  khaki;
 text-align: center;
 }
@@ -22,7 +22,7 @@ text-align: center;
 
 .modulo{
 border: 3px solid  khaki;
-font-size: 10;
+font-size: 3vw;
 text-align: center;
 background-color: lightblue;
 }
@@ -31,7 +31,7 @@ background-color: lightblue;
 border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
-font-size: 15;
+font-size: 4vw;
 text-align: justify;
 text-align: center;
 background-color: khaki;
@@ -41,7 +41,7 @@ background-color: khaki;
 border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
-font-size: 15;
+font-size: 4vw;
 text-align: justify;
 text-align: center;
 background-color: khaki;
@@ -51,7 +51,7 @@ background-color: khaki;
 border: 3px solid  khaki;
 box-sizing: border-box;
 margin: 0 auto;
-font-size: 15;
+font-size: 4vw;
 text-align: justify;
 text-align: center;
 background-color: khaki;
@@ -60,7 +60,7 @@ background-color: khaki;
 .md{
 border: 3px solid  khaki;
 background-color: khaki;
-font-size: 10;
+font-size: 3vw;
 text-align: justify;
 text-align: center;
 }
@@ -76,7 +76,7 @@ justify-content: center;
 
 input, button {
 background-color: plum;
-font-size: 10;
+font-size: 3vw;
 }
 
 
@@ -88,14 +88,14 @@ font-size: 10;
 
 .h1, h2{
 background-color: lightblue;
-font-size: 12;
+font-size: 4vw;
 text-align: justify;
 text-align: center;
 }
 
 .p{
 background-color: lightblue;
-font-size: 10;
+font-size: 3vw;
 text-align: justify;
 
 }
@@ -103,21 +103,22 @@ text-align: justify;
 .h3{
 text-align: justify;
 font-style: italic;
-font-size: 1;
+font-size: 1vw;
 }
 
 .texto{
 text-align: justify;
-font-size: 10;
+font-size: vw;
 }
 
 .voltar{
 background-color: lightblue;
-font-size: 10;
+font-size: 3vw;
 text-align: center;
 display: block; 
 justify-content: center;
 }
+
 
 
 
