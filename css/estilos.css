@@ -19,7 +19,6 @@ text-align: center;
 }
 
 
-
 .modulo{
 pading: 1px;
 border: 3px solid  khaki;
@@ -92,7 +91,7 @@ font-size: 3vw;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: 10px; 
+  border-radius: 12px; 
   margin: 0 auto;
 }
 
@@ -101,7 +100,7 @@ width: 100%;
   max-width: 800px; 
   height: auto;
   display: block;
-  border-radius: 10px; 
+  border-radius: 12px; 
 }
 
 .h1, h2{
@@ -151,6 +150,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
