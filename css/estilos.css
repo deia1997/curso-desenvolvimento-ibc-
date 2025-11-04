@@ -1,5 +1,4 @@
 * {
-
   font-family: 4vw, Arial, sans-serif;
   margin-left:7px;
   margin-right: 5px;
@@ -91,7 +90,7 @@ font-size: 3vw;
 .ban{
   width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   pading: 0;
   margin: 0 auto;
   border-radius: 10px;
@@ -149,6 +148,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
