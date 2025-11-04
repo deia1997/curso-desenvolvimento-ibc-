@@ -101,9 +101,15 @@ text-align: justify;
 }
 
 .h3{
-text-align: justify;
-font-style: italic;
-font-size: -1vw;
+font-size: 1vw; 
+    color: red; 
+    font-weight: bold;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    background-color: lightblue; 
+    padding: 5px; 
+    border: 3px solid khaki; 
+    display: inline-block;
 }
 
 .texto{
@@ -122,6 +128,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
