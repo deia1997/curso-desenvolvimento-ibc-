@@ -92,17 +92,16 @@ font-size: 3vw;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #000; /* opcional: fundo neutro */
-  border-radius: 15px; /* opcional */
+  border-radius: 10px; 
   margin: 0 auto;
 }
 
 .ban{
 width: 100%;
-  max-width: 800px; /* limita o tamanho máximo no desktop */
+  max-width: 800px; 
   height: auto;
   display: block;
-  border-radius: 15px; /* opcional */
+  border-radius: 10px; 
 }
 
 .h1, h2{
@@ -152,6 +151,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
