@@ -89,10 +89,17 @@ font-size: 3vw;
 
 
 .ban{
-  pading: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  pading: 0;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  justify-content: center;
 }
 
 .h1, h2{
@@ -142,6 +149,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
