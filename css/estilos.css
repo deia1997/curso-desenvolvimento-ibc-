@@ -13,7 +13,7 @@
 th, td {
 pading: 1px;
 background-color: lightblue;
-font-size: 4vw;
+font-size: 3vw;
 border: 3px solid  khaki;
 text-align: center;
 }
@@ -122,7 +122,7 @@ text-align: justify;
 .h3{
 pading: 1px;
 font-size: 2vw; 
-    color: red; 
+    color: black; 
     font-weight: bold;
     text-transform: uppercase; 
     letter-spacing: 1px; 
@@ -150,6 +150,7 @@ justify-content: center;
 .nome{
 white-space: nowrap;
 }
+
 
 
 
