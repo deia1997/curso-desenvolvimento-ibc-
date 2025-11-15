@@ -26,10 +26,11 @@ p {
   margin-bottom: 10px;
 }
 
-texto {
+.texto {
   font-size: 4vw;
   text-align: justify;
   padding: 8px;
+  background-color: transparent;
 }
 
 .tabela {
@@ -97,7 +98,7 @@ th, td {
 
 .video {
   display: flex;
-  justify-content: ;
+  justify-content: flex-start;
   align-items: center;
   margin: 10px auto;
 }
@@ -126,11 +127,12 @@ input, button {
 
 @media (min-width: 600px) {
   h1, h2 { font-size: 2.5rem; }
-  p, texto { font-size: 1.2rem; }
+  p, .texto { font-size: 1.2rem; }
   th, td { font-size: 1.1rem; }
   .tabela, .c, .ta { font-size: 1.3rem; }
   input, button { font-size: 1rem; }
 }
+
 
 
 
