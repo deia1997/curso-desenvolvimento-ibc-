@@ -22,6 +22,7 @@ h1, h2 {
 p {
   font-size: 4vw;
   padding: 8px;
+  background-color: lightblue;
   margin-bottom: 10px;
 }
 
@@ -130,6 +131,7 @@ input, button {
   .tabela, .c, .ta { font-size: 1.3rem; }
   input, button { font-size: 1rem; }
 }
+
 
 
 
